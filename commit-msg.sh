@@ -8,16 +8,7 @@
 #
 # To enable this hook, rename this file to "commit-msg".
 
-# Uncomment the below to add a Signed-off-by line to the message.
-# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
-# hook is more suited to it.
-#
-# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
-# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
-
-# This example catches duplicate Signed-off-by lines.
-
-test "" != "$(grep '#[0-9]\+' "$1")" || {
+test "" = "$(grep '#[0-9]\+' "$1")" && {
 	echo >&2 Must write Issue no!
 	exit 1
 }
