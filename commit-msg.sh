@@ -17,7 +17,7 @@
 
 # This example catches duplicate Signed-off-by lines.
 
-test "" = "$(grep '#\d+' "$1")" || {
+test "" = "$(grep '#\[0-9]\+' "$1")" || {
 	echo >&2 Must write Issue no!
 	exit 1
 }
